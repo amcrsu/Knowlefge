@@ -1,0 +1,19 @@
+On Acer laptops with hybrid graphics (Intel XE and Nvidia RTX3050) the brightness control don't work on linux distributions (very tested) after installed.
+
+Open the grub file in `/etc/default/grub`.
+`sudo nano /etc/default/grub`
+ 
+Change the line:
+
+`GRUB_CMDLINE_LINUX_DEFAULT="quiet splash acpi_backlight=video"`
+
+Or, depending on the distro:
+
+`GRUB_CMDLINE_LINUX_DEFAULT="quiet splash pcie_aspm=force acpi_backlight=native"`
+
+After modification, give the command:
+`sudo update-grub`
+
+If this command doesn't work, install the grub-customizer and apply after open the application.
+
+This commands was tested on Debian, Ubuntu, Mint (after updating the kernel to version 6 or higher), PopOS (with grub), ZorinOS, Fedora, OpenSuse, EndeavourOS and Manjaro, being KDE or Gnome.
